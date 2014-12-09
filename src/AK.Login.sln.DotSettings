@@ -1,0 +1,5 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeEditing/Intellisense/CodeCompletion/ParenthesesInsertType/@EntryValue">None</s:String>
+	<s:String x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=ParameterHidesMember/@EntryIndexedValue">DO_NOT_SHOW</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/UserRules/=27355a0f_002D2e84_002D4a0a_002Db9fa_002D634ce1f02d7a/@EntryIndexedValue">&lt;Policy&gt;&lt;Descriptor Staticness="Static, Instance" AccessRightKinds="Private, Protected, ProtectedInternal" Description="Fields (not Public or Internal)"&gt;&lt;ElementKinds&gt;&lt;Kind Name="FIELD" /&gt;&lt;/ElementKinds&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;&lt;/Policy&gt;</s:String>
+	</wpf:ResourceDictionary>

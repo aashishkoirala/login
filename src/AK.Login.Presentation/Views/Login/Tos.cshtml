@@ -1,0 +1,76 @@
+﻿@*******************************************************************************************************************************
+ * AK.Login.Presentation.Views.Login.Tos
+ * Copyright © 2014 Aashish Koirala <http://aashishkoirala.github.io>
+ * 
+ * This file is part of AK-Login.
+ *  
+ * AK-Login is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * AK-Login is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with AK-Login.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ *******************************************************************************************************************************@
+
+@* ReSharper disable Html.PathError *@
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Terms of Service</title>
+        <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="~/Content/css/login.css" />
+        <script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <br/><br/>
+            <div class="well">
+                <h3>Terms of Service</h3>
+                <hr/>        
+                <span class="small">
+                    <i>
+                        You will have to excuse the standoffish, hostile nature of the terms of service. But the truth is this is a freely
+                        hosted showcase instance that one guy built and put up. While I greatly appreciate your use of and feedback on the
+                        application, I need to make sure you know what you're getting into.
+                    </i>    
+                </span>
+                <br/><br/>
+                By logging in, you agree to the following terms of service for this application (referred to hereby as "this application"):
+                <br/><br/>
+                <ul>
+                    <li>
+                        The purpose of this instance is to showcase the application. I do use it personally, but if you plan to use it, do be aware that
+                        this is a freely hosted development instance and can go down at any time- leading to loss of service as well as data.
+                    </li>
+                    <li>There may still be bugs in the system that may lead to undesired behavior.</li>
+                    <li>
+                        If the application or database hosting provider is hacked or similarly compromised, intruders may gain access to your data.
+                        See <a href="privacy">Privacy</a> for details on how your data is stored.
+                    </li>
+                    <li>
+                        The application is not hosted over SSL. That means the connection from your browser to the system is not encrypted.
+                        Even though the authentication process uses industry standard protocols and signed messages, the connection itself is not encrypted.
+                        Once you are authenticated, all your traffic within the application is not encrypted either.
+                    </li>
+                    <li>You are urged not to use the application to store critical or sensitive information.</li>
+                    <li>
+                        I, the author of this application, am not to be held responsible for any adverse thing that happens in your life because of
+                        your using this application or because of any of the points mentioned above.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
+@* ReSharper restore Html.PathError *@

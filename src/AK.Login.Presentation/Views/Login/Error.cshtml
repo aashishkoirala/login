@@ -1,0 +1,54 @@
+﻿@*******************************************************************************************************************************
+ * AK.Login.Presentation.Views.Login.Error
+ * Copyright © 2014 Aashish Koirala <http://aashishkoirala.github.io>
+ * 
+ * This file is part of AK-Login.
+ *  
+ * AK-Login is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * AK-Login is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with AK-Login.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ *******************************************************************************************************************************@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Something's wrong!</title>
+        <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="~/Content/css/login.css" />
+        <script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h3>Something went wrong!</h3>
+            <hr/>
+            Extremely sorry for the inconvenience.<br/><br/>
+            @if (Request.Browser.Browser == "IE")
+            {
+                <text>
+                    Looks like you're using Internet Explorer.
+                    That may have something to do with it.
+                    <br /><br/>
+                    Please try again using Chrome or Firefox.
+                </text>
+            }
+            else
+            {
+                <text>
+                    Please try again later or <a href="http://twitter.com/aashishkoirala">send me a note</a>.
+                </text>
+            }
+        </div>
+    </body>
+</html>
