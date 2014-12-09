@@ -1,0 +1,49 @@
+﻿@*******************************************************************************************************************************
+ * AK.Login.Presentation.Views.Login.Privacy
+ * Copyright © 2014 Aashish Koirala <http://aashishkoirala.github.io>
+ * 
+ * This file is part of AK-Login.
+ *  
+ * AK-Login is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * AK-Login is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with AK-Login.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ *******************************************************************************************************************************@
+
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Privacy Policy</title>
+        <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="~/Content/css/login.css" />
+        <script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <br/><br/>
+            <div class="well">
+                <h3>Privacy Policy</h3>
+                <hr/>
+                The application level data is stored in a database and is not encrypted. The security of the database system is relied upon
+                for protection of the data. However, the only thing that links this data to the user, and the only piece of information that is
+                stored by the application to identify the user is the user key. The user key is a SHA-256 hash of the user identifier, which
+                is a random/unique alphanumeric value returned by Facebook (for Facebook login), or the user's Google account e-mail address
+                (for Google login). Of course, if you have content within the application level data that can be used to identify you, that
+                is not encrypted as mentioned above. This includes your display name - but remember that that does not have to be your real name.
+            </div>
+        </div>
+    </body>
+</html>

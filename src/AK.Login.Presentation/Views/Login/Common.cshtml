@@ -1,0 +1,43 @@
+﻿@*******************************************************************************************************************************
+ * AK.Login.Presentation.Views.Login.Common
+ * Copyright © 2014 Aashish Koirala <http://aashishkoirala.github.io>
+ * 
+ * This file is part of AK-Login.
+ *  
+ * AK-Login is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * AK-Login is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with AK-Login.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ *******************************************************************************************************************************@
+
+@model AK.Login.Presentation.LoginViewModel
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>@Model.Splash.ApplicationName</title>
+        <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="~/Content/css/google.css" />
+        <link rel="stylesheet" type="text/css" href="~/Content/css/login.css" />
+        <style type="text/css">
+            @Html.Raw(Model.Splash.TitleCss)
+            @Html.Raw(Model.Splash.DescriptionCss)
+        </style>
+        <script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    </head>
+    <body>
+        @RenderBody()
+        <script type="text/javascript" src="~/Scripts/facebook.js"></script>
+    </body>
+</html>
