@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="Aashish Koirala's To Do Application">
+		<title>AK-Login | Aashish Koirala</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen" />
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script type="text/javascript" src="http://aashishkoirala.github.io/scripts/bootstrap.min.js"></script>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="container">
+			<header>
+			    <div class="row">
+			        <div class="span4">
+			            <a href="http://aashishkoirala.github.io" style="text-decoration: none">
+			                <h2 class="muted" style="font-weight: normal" title="Aashish Koirala">aashish<b>koirala</b></h2>
+			            </a>
+			        </div>
+			        <div class="span8 pull-right" style="padding-top: 10px">
+			            <div class="pull-right">
+			                <a title="Aashish Koirala on GitHub" href="http://github.com/aashishkoirala"><img alt="Aashish Koirala on GitHub" src="http://aashishkoirala.github.io/images/github.png" width="32" height="32" style="width: 32px; height: 32px"/></a>
+			                <a title="Aashish Koirala on Twitter" href="http://twitter.com/aashishkoirala"><img alt="Aashish Koirala on Twitter" src="http://aashishkoirala.github.io/images/twitter.png" width="32" height="32" style="width: 32px; height: 32px"/></a>
+			                <a title="Aashish Koirala on LinkedIn" href="http://www.linkedin.com/in/aashishkoirala"><img alt="Aashish Koirala on LinkedIn" src="http://aashishkoirala.github.io/images/linkedin.png" width="32" height="32" style="width: 32px; height: 32px"/></a>
+							<a title="Go to My Blog" href="http://aashishkoirala.wordpress.com"><img alt="Go to My Blog" src="https://secure.gravatar.com/avatar/100f2280ecbf23438d15db61ad1e3ba0" width="32" height="32" style="width: 32px; height: 32px"/></a>
+			            </div>
+			        </div>
+			    </div>
+			</header>
+
+		    <section id="main-content">
+		        <div class="well">
+		            <h3>AK-Login</h3>
+		            <ul>
+						<li><a href="http://aklogin.apphb.com">Go to Application</a></li>
+		                <li><a href="http://github.com/aashishkoirala/login">Go to GitHub Repository</a></li>
+		            </ul>
+                    <br/>
+					This is the central login system that I use (or am in the process of migrating them to use) for all of my applications.
+					Once you log in using this application, the idea is for you to be able to navigate to any of my applications without logging in again or having a separate user account.
+					When you navigate to one of my applications and are not logged in (or don't have a user account), you will be redirected to the login page that is hosted by this application.
+					The login page will display information about the target application and will let you login using a number of providers (such as Google or Facebook).
+		        </div>
+				<div class="row">
+					<div class="tabbable span3">
+						<ul class="nav nav-pills nav-stacked">
+						  <li class="active"><a href="#tech_tab" data-toggle="tab">Technical Overview</a></li>
+						  <li><a href="#how_tab" data-toggle="tab">How It Works</a></li>
+						  <li><a href="#tos_tab" data-toggle="tab">Terms of Service</a></li>
+						  <li><a href="#privacy_tab" data-toggle="tab">Privacy</a></li>
+						</ul>
+					</div>
+					<div class="tab-content span9">
+						<div class="tab-pane active" id="tech_tab">
+							<h5>Technical Overview</h5>
+							The application uses Windows Identity Foundation (<b>WIF</b>) as its core component.
+							It acts as a passive <b>STS</b> (Security Token Service) while dividing the role of <b>IP</b> (Identity Provider) between the target application
+							(or "<b>Relying Party</b>") and one or more third-party providers such as <b>Google</b> or <b>Facebook</b>. It is built so as to be able to support
+							multiple protocols between the Relying Party and the STS, but currently only <b>WS-Federation</b> is implemented.
+							I hope to build in support for <b>SAML</b> and <b>OAuth</b> at some point in the future.							
+							<br/><br/>
+							I also hope to integrate more identity providers other than Google and Facebook (and perhaps also extend this to be an identity provider itself)
+							at some point in the future. The third-party providers are used for authentication, but the responsibility of storing whatever user information
+							is needed by each application is the responsibility of that application (thus my statement that the identity provider role is divided between the
+							Relying Party and the third-party Identity Providers). Another plan for the future is to enable this to be an Active STS (i.e. an endpoint that any
+							application can use to get authenticated and get back a token - that will primarily be useful for mobile applications).
+						</div>
+						<div class="tab-pane" id="how_tab">
+							<h5>How It Works</h5>
+						    <ul>
+								<li>Each Relying Party is registered with the application through configuration - needs to have three settings populated: the <b>realm</b> URI, the reply-to URL and the login service URL.</li>
+								<li>The realm URI is a unique identifier for the party - an example being <b>urn:</b><i>ApplicationName</i>.</li>
+								<li>The reply-to URL is the URL that this application will redirect to once the user is authenticated. This is usually the main entry point URL for the Relying Party application.</li>
+								<li>
+									The Relying Party also needs to implement a WCF service with a predefined contract (defined in <code>ILoginService</code> - available in the <a href="http://aashishkoirala.github.io/commons/">Commons Library</a>.
+									The service is responsible for providing information about the application as well as any given user to AK-Login, as well as exposing a way to create new users to AK-Login.</li>
+								<li>The Relying Party application then needs to be configured for WIF and with AK-Login designated as the token issuer. There are methods available in the Commons Library that facilitate this.</li>
+								<li>Communication between the Relying Party and AK-Login is encrypted and signed using a shared <b>X.509</b> certificate.</li>
+								<li>
+									When you navigate to a protected endpoint in the Relying Party, and are not authenticated, you are redirected to the login page hosted by AK-Login.
+									This redirection request is generated by WIF and follows standard WS-Federation protocol.
+								</li>
+								<li>
+									AK-Login then uses the realm information passed in the request to look up information about the party.
+									It gets more information from the Relying Party using the <code>ILoginService</code> WCF endpoint. 
+									It uses this to display application-specific information in the login page.
+								</li>
+								<li>From the login page, you can use Google (using it's OAuth API) or Facebook (using its JavaScript API) to authenticate yourself.</li>
+								<li>
+									AK-Login then communicates with the Relying Party using the <code>ILoginService</code> WCF endpoint to see if a user matching credentials just provided by Google or Facebook exists.
+									If so, it uses this information to instruct WIF to write an encrypted session token cookie, and redirects back to the Relying Party reply-to URL - where it is now
+									authenticated thanks to the encrypted session token cookie.
+								</li>
+								<li>
+									If a user is not found, AK-Login prompts you to enter a display name for the user that is going to be newly created.
+									Once you provide the information, the <code>ILoginService</code> WCF endpoint is again used to create a new user record in the Relying Party application, and the rest of the process is same as above.</li>
+								<li>When you logout from the Relying Party application, WIF sends a logout <b>WS-Federation</b> message to AK-Login which takes care of processing the logout operation.</li>
+						    </ul>
+						</div>
+						<div class="tab-pane" id="tos_tab">
+							<h5>Terms of Service</h5>
+							<br/>
+							Click <a href="http://aklogin.apphb.com/tos/">here</a> to view the terms of service for this application.
+						</div>
+						<div class="tab-pane" id="privacy_tab">
+							<h5>Privacy</h5>
+							<br/>
+							Click <a href="http://aklogin.apphb.com/privacy/">here</a> to view the privacy policy for this application.
+						</div>
+					</div>
+				</div>
+		    </section>
+		</div>
+
+		<script type="text/javascript">
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-42900227-1', 'aashishkoirala.github.io');
+		  ga('send', 'pageview');
+		</script>
+
+	</body>
+</html>
